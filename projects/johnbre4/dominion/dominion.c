@@ -649,7 +649,7 @@ void playAdventurer(struct gameState *state, int temphand[], int currentPlayer)
 	int cardDrawn;
 	int z = 0;// this is the counter for the temp hand
 
-    while(drawntreasure<2){
+    while(drawntreasure<=2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -673,7 +673,7 @@ void playSmithy(struct gameState *state, int currentPlayer, int handPos)
 {
 	int i;
 
-	for (i = 0; i < 3; i++)
+	for (i = 1; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -688,7 +688,7 @@ void playVillage(struct gameState *state, int currentPlayer, int handPos)
     drawCard(currentPlayer, state);
 			
     //+2 Actions
-    state->numActions = state->numActions + 2;
+    state->numActions = state->numActions + 1;
 			
     //discard played card from hand
     discardCard(handPos, currentPlayer, state, 0);
@@ -703,7 +703,7 @@ void playGreatHall(struct gameState *state, int currentPlayer, int handPos)
       state->numActions++;
 			
       //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 1);
 }
 
 void playOutpost(struct gameState *state, int currentPlayer, int handPos)
