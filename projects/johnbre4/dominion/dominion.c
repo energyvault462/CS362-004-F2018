@@ -706,7 +706,14 @@ void playGreatHall(struct gameState *state, int currentPlayer, int handPos)
       discardCard(handPos, currentPlayer, state, 0);
 }
 
-//int playThree()
+void playOutpost(struct gameState *state, int currentPlayer, int handPos)
+{
+      //set outpost flag
+      state->outpostPlayed++;
+			
+      //discard card
+      discardCard(handPos, currentPlayer, state, 0);
+}
 
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
@@ -1183,11 +1190,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case outpost:
-      //set outpost flag
-      state->outpostPlayed++;
-			
-      //discard card
-      discardCard(handPos, currentPlayer, state, 0);
+      playOutpost(state, currentPlayer, handPos);
       return 0;
 		
     case salvager:
