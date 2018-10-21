@@ -32,6 +32,14 @@ unittestresults: unittest1.c dominion.c rngs.c
 	gcc -o unittest1 dominion.c rngs.c unittest1.c $(CFLAGS)
 	./unittest1 >> unittestresult.out
 	gcov -b unittest1.c >> unittestresult.out
+
+	gcc -o unittest2 dominion.c rngs.c unittest2.c $(CFLAGS)
+	echo "" >> unittestresult.out
+	echo "" >> unittestresult.out
+	echo "unit test 2" >> unittestresult.out
+	./unittest2 >> unittestresult.out
+	gcov -b unittest2.c >> unittestresult.out
+	echo "" >> unittestresult.out
 	gcov -b dominion.c >> unittestresult.out
 
 	echo "" >> unittestresult.out
