@@ -39,11 +39,18 @@ unittestresults: unittest1.c dominion.c rngs.c
 	echo "unit test 2" >> unittestresult.out
 	./unittest2 >> unittestresult.out
 	gcov -b unittest2.c >> unittestresult.out
+
+	gcc -o unittest3 dominion.c rngs.c unittest3.c $(CFLAGS)
 	echo "" >> unittestresult.out
-	gcov -b dominion.c >> unittestresult.out
+	echo "" >> unittestresult.out
+	echo "unit test 3" >> unittestresult.out
+	./unittest3 >> unittestresult.out
+	gcov -b unittest3.c >> unittestresult.out
+
 
 	echo "" >> unittestresult.out
 	echo "" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
 runtests: testDrawCard 
 	./testDrawCard &> unittestresult.out
