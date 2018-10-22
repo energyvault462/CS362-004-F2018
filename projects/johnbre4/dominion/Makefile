@@ -24,7 +24,7 @@ testAll: dominion.o testSuite.c
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
-unittestresults: unittest1.c dominion.c rngs.c
+unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c dominion.c rngs.c cardtest1.c
 	echo "unit test 1" > unittestresult.out
 	echo "" >> unittestresult.out
 	echo "Result for running dominion tests:" >> unittestresult.out
@@ -54,6 +54,13 @@ unittestresults: unittest1.c dominion.c rngs.c
 	echo "unit test 4" >> unittestresult.out
 	./unittest4 >> unittestresult.out
 	gcov -b unittest4.c >> unittestresult.out
+
+	gcc -o cardtest1 dominion.c rngs.c cardtest1.c $(CFLAGS)
+	echo "" >> unittestresult.out
+	echo "" >> unittestresult.out
+	echo "card test 1" >> unittestresult.out
+	./cardtest1 >> unittestresult.out
+	gcov -b cardtest1.c >> unittestresult.out
 
 	echo "" >> unittestresult.out
 	echo "" >> unittestresult.out
