@@ -69,6 +69,13 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c dom
 	./cardtest2 >> unittestresult.out
 	gcov -b cardtest2.c >> unittestresult.out
 
+	gcc -o cardtest3 dominion.c rngs.c cardtest3.c $(CFLAGS)
+	echo "" >> unittestresult.out
+	echo "" >> unittestresult.out
+	echo "card test 3" >> unittestresult.out
+	./cardtest3 >> unittestresult.out
+	gcov -b cardtest3.c >> unittestresult.out
+
 	echo "" >> unittestresult.out
 	echo "" >> unittestresult.out
 	gcov -b dominion.c >> unittestresult.out
