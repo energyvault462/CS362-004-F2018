@@ -56,19 +56,16 @@ int testPlaySmithy(struct gameState *state)
 {
     int money = 0;
     int smithyPos = -1;
-    int adventurerPos = -1;
     int i;
     for (i = 0; i < numHandCards(state); i++) {
       if (handCard(i, state) == copper)
-    money++;
+        money++;
       else if (handCard(i, state) == silver)
-    money += 2;
+        money += 2;
       else if (handCard(i, state) == gold)
-    money += 3;
+        money += 3;
       else if (handCard(i, state) == smithy)
-    smithyPos = i;
-      else if (handCard(i, state) == adventurer)
-    adventurerPos = i;
+        smithyPos = i;
     }
 
 
@@ -79,7 +76,7 @@ int testPlaySmithy(struct gameState *state)
 
 }
 
-void printResults(int result, int expected)
+void printResults(int expected, int result)
 {
   if(result == expected)
   {
@@ -103,11 +100,13 @@ int main(int argc, char *argv[])
   
 
   expected = setHandA(&g);
-  printResults(expected, testPlaySmithy(&g));
+  result=testPlaySmithy(&g);
+  printResults(expected, result);
 
   expected = setHandB(&g);
-  printResults(expected, testPlaySmithy(&g));
   result=testPlaySmithy(&g);
+  printResults(expected, result);
+ 
 
 
    return 0;
