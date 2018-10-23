@@ -1,3 +1,8 @@
+/*
+test written by Brent Johnson
+OSU CS362-400 FALL 2018
+*/
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
