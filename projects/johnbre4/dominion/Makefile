@@ -36,12 +36,24 @@ randomtestresults: dominion.c rngs.c
 	echo "" >> randomtestcard1.out
 	echo "Result for running dominion tests:" >> randomtestcard1.out
 	echo "randomtestcard1.c" >> randomtestcard1.out
-	gcc -o randomtest1 dominion.c rngs.c randomtestcard1.c $(CFLAGS)
-	./randomtest1 >> randomtestcard1.out
+	gcc -o randomtestcard1 dominion.c rngs.c randomtestcard1.c $(CFLAGS)
+	./randomtestcard1 >> randomtestcard1.out
 	gcov -b randomtestcard1.c >> randomtestcard1.out
 	gcov -b dominion.c >> randomtestcard1.out
 	cat randomtestcard1.c.gcov >> randomtestcard1.out
 	cat dominion.c.gcov >> randomtestcard1.out
+
+	echo "random test 2" > randomtestcard2.out
+	rm -f dominion.c.gcov
+	echo "" >> randomtestcard2.out
+	echo "Result for running dominion tests:" >> randomtestcard2.out
+	echo "randomtestcard2.c" >> randomtestcard2.out
+	gcc -o randomtestcard2 dominion.c rngs.c randomtestcard2.c $(CFLAGS)
+	./randomtestcard2 >> randomtestcard2.out
+	gcov -b randomtestcard2.c >> randomtestcard2.out
+	gcov -b dominion.c >> randomtestcard2.out
+	cat randomtestcard2.c.gcov >> randomtestcard2.out
+	cat dominion.c.gcov >> randomtestcard2.out
 
 
 
