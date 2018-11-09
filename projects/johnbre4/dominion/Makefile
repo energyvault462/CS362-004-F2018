@@ -55,6 +55,18 @@ randomtestresults: dominion.c rngs.c
 	cat randomtestcard2.c.gcov >> randomtestcard2.out
 	cat dominion.c.gcov >> randomtestcard2.out
 
+	echo "random test adventurer" > randomtestadventurer.out
+	rm -f dominion.c.gcov
+	echo "" >> randomtestadventurer.out
+	echo "Result for running dominion tests:" >> randomtestadventurer.out
+	echo "randomtestadventurer.c" >> randomtestadventurer.out
+	gcc -o randomtestadventurer dominion.c rngs.c randomtestadventurer.c $(CFLAGS)
+	./randomtestadventurer >> randomtestadventurer.out
+	gcov -b randomtestadventurer.c >> randomtestadventurer.out
+	gcov -b dominion.c >> randomtestadventurer.out
+	cat randomtestadventurer.c.gcov >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out
+
 
 
 player: player.c interface.o
